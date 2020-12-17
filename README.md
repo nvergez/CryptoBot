@@ -7,5 +7,8 @@ It can trade with BTC and ETH from EUR.
 - [Artificial Intelligence](ai)
 - [Frontend](frontend)
 
+# Binance API
+You must create API key and secret with your Binance account, and put both in the .env file at the project's root.
+
 # Author
 - Nicolas Vergez
