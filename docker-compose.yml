@@ -1,0 +1,9 @@
+version: '3.8'
+services: 
+    service-ai:
+        build:
+            context: ./ai
+        env_file:
+            - .env
+        volumes: 
+            - ./ai:/app
