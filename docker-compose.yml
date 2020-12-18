@@ -5,6 +5,7 @@ services:
             context: ./ai
         env_file:
             - .env
+            - .env_key
         volumes: 
             - ./ai:/app
     service-binance:
@@ -12,6 +13,7 @@ services:
             context: ./api
         env_file:
             - .env
+            - .env_key
         volumes:
             - ./api/src:/app/src
         ports: 
