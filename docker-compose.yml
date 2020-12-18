@@ -7,3 +7,12 @@ services:
             - .env
         volumes: 
             - ./ai:/app
+    service-binance:
+        build:
+            context: ./api
+        env_file:
+            - .env
+        volumes:
+            - ./api/src:/app/src
+        ports: 
+            - 9000:9000

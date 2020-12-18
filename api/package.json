@@ -1,0 +1,21 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "service of binance api",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server.js",
+    "nodemon": "nodemon ./src/server.js"
+  },
+  "author": "Nicolas Vergez",
+  "license": "ISC",
+  "dependencies": {
+    "node-binance-api": "^0.12.3",
+    "restify": "^8.5.1",
+    "restify-errors": "^8.0.2",
+    "nodemon": "^2.0.6",
+    "binance-api-node": "^0.10.14"
+  },
+  "type": "module"
+}
