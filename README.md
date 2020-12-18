@@ -17,8 +17,5 @@ When you have your .env_key file you can build and run the project with `docker-
 - [Artificial Intelligence](ai)
 - [Frontend](frontend)
 
-## Binance API
-You must create API key and secret with your Binance account, and put both in the .env file at the project's root.
-
 ## Author
 - Nicolas Vergez
