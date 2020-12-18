@@ -38,7 +38,17 @@ controller.candles = (req, res, next) => {
 }
 
 controller.order = (req, res, next) => {
-
+    client.order(req.query)
+    .then((response) => {
+        console.log(response)
+        res.send(response)
+        return next()
+    })
+    .catch((error) => {
+        console.log(error)
+        res.send(400, error)
+        return next()
+    })
 }
 
 controller.account = (req, res, next) => {

@@ -139,3 +139,73 @@ HTTP/1.1 400 Bad Request
     "message": "message d'erreur"
 }
 ``` 
+---
+
+## Pass an order
+**You send:**  The symbol, the amount, the side.\
+**You get:** The order recap.
+
+**Request:**
+```json
+POST /order HTTP/1.1
+
+{
+}
+```
+| Query            | Type   | Required | Default  | Description                                                         |
+| ---------------- | ------ | -------- | -------- | ------------------------------------------------------------------- |
+| symbol           | String | true     |
+| side             | String | true     |          | `BUY`,`SELL`                                                        |
+| type             | String | false    | `LIMIT`  | `LIMIT`, `MARKET`                                                   |
+| quantity         | Number | true     |
+| price            | Number | true     |          | Optional for `MARKET` orders                                        |
+| timeInForce      | String | false    | `GTC`    | `FOK`, `GTC`, `IOC`                                                 |
+| newClientOrderId | String | false    |          | A unique id for the order. Automatically generated if not sent.     |
+| stopPrice        | Number | false    |          | Used with stop orders                                               |
+| newOrderRespType | String | false    | `RESULT` | Returns more complete info of the order. `ACK`, `RESULT`, or `FULL` |
+| icebergQty       | Number | false    |          | Used with iceberg orders                                            |
+| recvWindow       | Number | false    |
+
+Additional mandatory parameters based on `type`:
+
+| Type                | Additional mandatory parameters                 |
+| ------------------- | ----------------------------------------------- |
+| `LIMIT`             | `timeInForce`, `quantity`, `price`              |
+| `MARKET`            | `quantity`                                      |
+| `STOP_LOSS`         | `quantity`, `stopPrice`                         |
+| `STOP_LOSS_LIMIT`   | `timeInForce`, `quantity`, `price`, `stopPrice` |
+| `TAKE_PROFIT`       | `quantity`, `stopPrice`                         |
+| `TAKE_PROFIT_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice` |
+| `LIMIT_MAKER`       | `quantity`, `price`                             |
+
+- `LIMIT_MAKER` are `LIMIT` orders that will be rejected if they would immediately match and trade as a taker.
+- `STOP_LOSS` and `TAKE_PROFIT` will execute a `MARKET` order when the `stopPrice` is reached.
+- Any `LIMIT` or `LIMIT_MAKER` type order can be made an iceberg order by sending an `icebergQty`.
+- Any order with an `icebergQty` MUST have `timeInForce` set to `GTC`.
+**Successful Response:**
+```json
+HTTP/1.1 200 OK
+
+{
+  "symbol": "XLMETH",
+  "orderId": 1740797,
+  "clientOrderId": "1XZTVBTGS4K1e",
+  "transactTime": 1514418413947,
+  "price": "0.00020000",
+  "origQty": "100.00000000",
+  "executedQty": "0.00000000",
+  "status": "NEW",
+  "timeInForce": "GTC",
+  "type": "LIMIT",
+  "side": "BUY"
+}
+```
+**Failed Response:**
+```json
+HTTP/1.1 400 Bad Request
+
+{
+    "code": "BadRequest",
+    "message": "message d'erreur"
+}
+```
