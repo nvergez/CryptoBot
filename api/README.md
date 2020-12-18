@@ -125,8 +125,8 @@ HTTP/1.1 200 OK
   "canWithdraw": true,
   "canDeposit": true,
   "balances": [
-    { "asset": 'BTC', "free": '0.00000000', "locked": '0.00000000' },
-    { "asset": 'LTC', "free": '0.00000000', "locked": '0.00000000' },
+    { "asset": "BTC", "free": "0.00000000", "locked": "0.00000000" },
+    { "asset": "LTC", "free": "0.00000000", "locked": "0.00000000" },
   ]
 }
 ```
