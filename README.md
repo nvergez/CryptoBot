@@ -2,10 +2,13 @@
 CryptoBot is a trading bot using the platform Binance.
 It can trade with BTC and ETH from EUR.
 
-# Documentation
+## Documentation
 - [Binance API](ai/binance_api)
 - [Artificial Intelligence](ai)
 - [Frontend](frontend)
 
-# Author
+## Binance API
+You must create API key and secret with your Binance account, and put both in the .env file at the project's root.
+
+## Author
 - Nicolas Vergez
