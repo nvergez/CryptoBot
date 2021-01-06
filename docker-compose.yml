@@ -1,0 +1,20 @@
+version: '3.8'
+services: 
+    service-ai:
+        build:
+            context: ./ai
+        env_file:
+            - .env
+            - .env_key
+        volumes: 
+            - ./ai:/app
+    service-binance:
+        build:
+            context: ./api
+        env_file:
+            - .env
+            - .env_key
+        volumes:
+            - ./api/src:/app/src
+        ports: 
+            - 9000:9000
