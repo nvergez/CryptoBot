@@ -79,4 +79,7 @@ export const useStyles = makeStyles((theme) => ({
     fixedHeight: {
       height: 240,
     },
+    item: {
+      padding: 0,
+    },
   }));
