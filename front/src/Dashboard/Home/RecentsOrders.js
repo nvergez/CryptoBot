@@ -6,7 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Title from './Title';
+import Title from '../Title';
 
 // Generate Order Data
 function createData(id, date, pair, type, side, price, quantity, status) {
@@ -23,17 +23,13 @@ const rows = [
   createData(4, today, 'ETH/BTC', 'Limit', 'Buy', '0.01826352', '244', 'Filled'),
 ];
 
-function preventDefault(event) {
-  event.preventDefault();
-}
-
 const useStyles = makeStyles((theme) => ({
   seeMore: {
     marginTop: theme.spacing(3),
   },
 }));
 
-export default function Orders() {
+export default function RecentsOrders() {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -65,7 +61,7 @@ export default function Orders() {
         </TableBody>
       </Table>
       <div className={classes.seeMore}>
-        <Link color="primary" href="#" onClick={preventDefault}>
+        <Link color="primary" href="#" onClick={() => {window.location='/orders'}}>
           See more orders
         </Link>
       </div>
