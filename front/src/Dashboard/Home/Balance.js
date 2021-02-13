@@ -16,7 +16,7 @@ export default function Balance() {
     <React.Fragment>
       <Title>Balance</Title>
       <Typography component="p" variant="h4">
-        $3,024.00
+        $3,027.00
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
         on {new Date().toDateString()}
