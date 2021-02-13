@@ -5,9 +5,11 @@ services:
             context: ./ai
         env_file:
             - .env
-            - .env_key
         volumes: 
-            - ./ai:/app
+            - ./ai/server:/app/server
+            - ./ai/logs:/app/logs
+        ports:
+            - "9001:9001"
     service-binance:
         build:
             context: ./api
@@ -17,13 +19,12 @@ services:
         volumes:
             - ./api/src:/app/src
         ports: 
-            - 9000:9000
+            - "9000:9000"
     frontend:
         build:
             context: ./front
         env_file:
             - .env
-            - .env_key
         volumes:
             - ./front/src:/app/src
         ports:

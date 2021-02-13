@@ -1,8 +1,8 @@
-FROM python:3.8
+FROM node:latest
 
-RUN /usr/local/bin/python -m pip install --upgrade pip
 WORKDIR /app
-COPY requirements.txt ./
-RUN pip3 install -r requirements.txt
+COPY package*.json ./
+RUN npm install
 COPY . .
-CMD "python3" "app.py"
+EXPOSE 9001
+CMD "npm" "run" "nodemon"
