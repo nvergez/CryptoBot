@@ -23,7 +23,7 @@ export default function Balance() {
       </Typography>
       <div>
         <Link color="primary" href="#" onClick={() => {window.location='/balances'}}>
-          View balance
+          View balances
         </Link>
       </div>
     </React.Fragment>

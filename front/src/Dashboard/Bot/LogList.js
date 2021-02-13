@@ -7,6 +7,9 @@ import { useStyles } from '../Style'
 import raw from '../../logs/dump.log';
 
 var data = [
+    "The pair NMRBTC increases by 11.194968553459116% the last 15 seconds. (2021-02-10T17:40:03.395Z) (0.00088400)",
+    "The pair CTSIBTC increases by 11.363636363636353% the last 15 seconds. (2021-02-10T20:37:03.294Z) (0.00000882)",
+    "The pair CTSIBTC increases by 11.34663341645885% the last 15 seconds. (2021-02-10T20:37:03.495Z) (0.00000893)",
 ]
 
 export default function LogList() {
