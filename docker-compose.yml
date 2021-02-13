@@ -18,3 +18,13 @@ services:
             - ./api/src:/app/src
         ports: 
             - 9000:9000
+    frontend:
+        build:
+            context: ./front
+        env_file:
+            - .env
+            - .env_key
+        volumes:
+            - ./front/src:/app/src
+        ports:
+            - "80:3000"
