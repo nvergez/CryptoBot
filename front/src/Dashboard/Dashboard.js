@@ -17,6 +17,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './Home/Home';
 import Orders from './Orders/Orders'
 import Balances from './Balances/Balances'
+import Bot from './Bot/Bot'
 import { useStyles } from './Style'
 
 export default function Dashboard() {
@@ -44,7 +45,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Binance
+            CryptoBot
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={0} color="secondary">
@@ -72,6 +73,7 @@ export default function Dashboard() {
         <Switch>
           <Route path="/orders" component={Orders} />
           <Route path='/balances' component={Balances} />
+          <Route path="/bot" component={Bot} />
           <Route component={Home} />
         </Switch>
       </Router>

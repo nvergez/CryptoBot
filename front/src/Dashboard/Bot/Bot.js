@@ -4,12 +4,12 @@ import Container from '@material-ui/core/Container';
 import { useStyles } from '../Style'
 import { Copyright } from '../Copyright'
 
-export default function Balances() {
+export default function Bot() {
     const classes = useStyles();
     return (
         <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-          Balance
+        Bot
         <Container maxWidth="lg" className={classes.container}>
           <Box pt={4}>
             <Copyright />
