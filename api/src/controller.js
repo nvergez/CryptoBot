@@ -68,4 +68,61 @@ controller.account = (req, res, next) => {
     }
 }
 
+controller.totalBalance = async (req, res, next) => {
+    try {
+        var btc = 0
+        var data = await client.accountInfo()
+        var prices = await client.prices()
+        var balances = data.balances
+        for (var item of balances) {
+            var tmp = parseFloat(item.free) + parseFloat(item.locked)
+            if (item.asset == 'BTC') {
+                btc += tmp
+                continue
+            }
+            if (tmp > 0) {
+                if (prices[item.asset+'BTC'])
+                    btc += (parseFloat(prices[item.asset+'BTC']) * tmp)
+            }
+        }
+        var result = parseFloat(prices.BTCBUSD) * btc
+        res.send({balance: result.toFixed(2)})
+        return next()
+    } catch (e) {
+        console.log(e)
+        return next(new errors.BadRequestError("cought"))
+    }
+}
+
+controller.allBalances = async (req, res, next) => {
+    try {
+        var result = {}
+        var data = await client.accountInfo()
+        var prices = await client.prices()
+        var balances = data.balances
+        for (var item of balances) {
+            var tmp = parseFloat(item.free) + parseFloat(item.locked)
+            if (item.asset == 'BTC') {
+                result[item.asset] = tmp
+                continue
+            }
+            if (tmp > 0) {
+                if (prices[item.asset+'BTC'])
+                    result[item.asset] = (parseFloat(prices[item.asset+'BTC']) * tmp)
+            }
+        }
+        for (var item in result) {
+            result[item] = (parseFloat(prices.BTCBUSD) * result[item]).toFixed(2)
+        }
+        result = Object.fromEntries(
+            Object.entries(result).sort(([,a],[,b]) => b-a)
+        );
+        res.send(result)
+        return next()
+    } catch (e) {
+        console.log(e)
+        return next(new errors.BadRequestError("cought"))
+    }
+}
+
 export default controller

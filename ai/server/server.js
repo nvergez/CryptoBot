@@ -1,7 +1,7 @@
 import restify from 'restify'
 import setupRoutes from './routes.js'
 
-const PORT = process.env.PORT_API;
+const PORT = process.env.PORT_AI;
 
 var server = restify.createServer();
 
@@ -16,5 +16,5 @@ server.use(function crossOrigin(req,res,next){
 setupRoutes(server);
 
 server.listen(PORT, () => {
-    console.log("API service listening on port " + PORT + ".")
+    console.log("AI service listening on port " + PORT + ".")
 })

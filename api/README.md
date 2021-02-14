@@ -209,3 +209,40 @@ HTTP/1.1 400 Bad Request
     "message": "message d'erreur"
 }
 ```
+
+## Total balance in USD
+
+**Request:**
+```json
+GET /account/totalBalance HTTP/1.1
+
+{
+}
+```
+**Successful Response:**
+```json
+HTTP/1.1 200 OK
+
+{
+    "balance": 5000
+}
+```
+
+## All balances in USD
+
+**Request:**
+```json
+GET /account/allBalances HTTP/1.1
+
+{
+}
+```
+**Successful Response:**
+```json
+HTTP/1.1 200 OK
+
+{
+    "BTC": 5000,
+    "ETH": 123
+}
+```

@@ -8,6 +8,10 @@ function setupRoutes(server) {
     server.post("/order", controller.order)
 
     server.get("/account/infos", controller.account)
+
+    server.get("/account/totalBalance", controller.totalBalance)
+
+    server.get("/account/allBalances", controller.allBalances)
 };
 
 export default setupRoutes;
