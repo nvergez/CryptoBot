@@ -6,6 +6,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import AdbIcon from '@material-ui/icons/Adb';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 
 export const mainListItems = (
   <div>
@@ -26,6 +27,12 @@ export const mainListItems = (
         <AccountBalanceWalletIcon />
       </ListItemIcon>
       <ListItemText primary="Balances" />
+    </ListItem>
+    <ListItem button onClick={() => {window.location='/buysell'}}>
+      <ListItemIcon>
+        <LocalAtmIcon />
+      </ListItemIcon>
+      <ListItemText primary="Buy & Sell" />
     </ListItem>
     <ListItem button onClick={() => {window.location='/bot'}}>
       <ListItemIcon>

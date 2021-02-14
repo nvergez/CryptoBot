@@ -4,7 +4,7 @@ import fs from 'fs'
 const client = Binance.default()
 
 var data = []
-var callBySeconds = 5
+var callBySeconds = 3
 var interval = 10
 
 

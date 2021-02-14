@@ -246,3 +246,40 @@ HTTP/1.1 200 OK
     "ETH": 123
 }
 ```
+
+## Get all open orders
+
+**Request:**
+```json
+GET /account/openOrders HTTP/1.1
+
+{
+}
+```
+**Successful Response:**
+```json
+HTTP/1.1 200 OK
+
+[
+    {
+        "id": 78141179,
+        "date": 1612305221934,
+        "pair": "XVGBTC",
+        "type": "LIMIT",
+        "side": "SELL",
+        "price": "0.00000230",
+        "quantity": "5341.00000000",
+        "status": "NEW"
+    },
+    {
+        "id": 451589337,
+        "date": 1613129698847,
+        "pair": "EOSBTC",
+        "type": "LIMIT",
+        "side": "SELL",
+        "price": "0.00020000",
+        "quantity": "5.26000000",
+        "status": "NEW"
+    }
+]
+```
