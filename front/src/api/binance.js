@@ -10,4 +10,9 @@ async function getAllBalances() {
     return res.data
 }
 
-module.exports = { getTotalBalance, getAllBalances }
+async function getOpenOrders() {
+    const res = await axios.get("http://localhost:9000/account/openOrders")
+    return res.data
+}
+
+module.exports = { getTotalBalance, getAllBalances, getOpenOrders }

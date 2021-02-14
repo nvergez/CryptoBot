@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Chart from './Chart';
 import Balance from './Balance';
-import RecentOrders from './RecentsOrders';
+import OpenOrders from './OpenOrders';
 import { useStyles } from '../Style'
 import { Copyright } from '../Copyright'
 
@@ -33,7 +33,7 @@ export default function Home() {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <RecentOrders />
+                <OpenOrders />
               </Paper>
             </Grid>
           </Grid>

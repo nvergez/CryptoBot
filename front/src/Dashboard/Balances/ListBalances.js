@@ -47,7 +47,6 @@ class ListBalances  extends Component {
     }
 
     render() {
-        const { classes } = this.props
         return (
             <React.Fragment>
                 <Title>Balances</Title>
