@@ -125,4 +125,29 @@ controller.allBalances = async (req, res, next) => {
     }
 }
 
+controller.openOrders = async (req, res, next) => {
+    try {
+        var options = { weekday: 'short', year: 'numeric', month: 'long', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        var result = []
+        var data = await client.openOrders()
+        for (var item of data) {
+            var tmp = {}
+            tmp.id = item.orderId
+            tmp.date = (new Date(item.updateTime)).toLocaleDateString("en-US", options)
+            tmp.pair = item.symbol
+            tmp.type = item.type
+            tmp.side = item.side
+            tmp.price = item.price
+            tmp.quantity = item.origQty
+            tmp.status = item.status
+            result.push(tmp)
+        }
+        res.send(result)
+        return next()
+    } catch (e) {
+        console.log(e)
+        return next(new errors.BadRequestError("cought"))
+    }
+}
+
 export default controller
