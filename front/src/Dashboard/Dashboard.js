@@ -18,6 +18,7 @@ import Home from './Home/Home';
 import Orders from './Orders/Orders'
 import Balances from './Balances/Balances'
 import Bot from './Bot/Bot'
+import BuySell from './BuySell/BuySell'
 import { useStyles } from './Style'
 
 export default function Dashboard() {
@@ -74,6 +75,7 @@ export default function Dashboard() {
           <Route path="/orders" component={Orders} />
           <Route path='/balances' component={Balances} />
           <Route path="/bot" component={Bot} />
+          <Route path="/buysell" component={BuySell} />
           <Route component={Home} />
         </Switch>
       </Router>
