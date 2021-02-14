@@ -209,3 +209,21 @@ HTTP/1.1 400 Bad Request
     "message": "message d'erreur"
 }
 ```
+
+## Total balance
+
+**Request:**
+```json
+GET /account/totalBalance HTTP/1.1
+
+{
+}
+```
+**Successful Response:**
+```json
+HTTP/1.1 200 OK
+
+{
+    "balance": 5000
+}
+```
