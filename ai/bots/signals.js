@@ -21,7 +21,7 @@ var fetchPrices = () => {
                     var front = data.shift()
                     for (var attr in front) {
                         var percent = ((response[attr] / front[attr]) - 1) * 100
-                        if (percent >= 1 && response[attr] > 0.00000010) {
+                        if (percent >= 10 && response[attr] > 0.00000010) {
                             var file = fs.createWriteStream("./logs/dump.log", {flags: 'a'})
                             file.write("The pair " + attr + " increases by " + percent +"% the last 15 seconds. (" + (new Date().toISOString()) + ") (" + response[attr] + ")\n")
                             file.end()
