@@ -130,6 +130,7 @@ controller.openOrders = async (req, res, next) => {
         var options = { weekday: 'short', year: 'numeric', month: 'long', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
         var result = []
         var data = await client.openOrders()
+        data.sort((a, b) => (a.updateTime > b.updateTime) ? 1 : (b.updateTime > a.updateTime) ? -1 : 0).reverse()
         for (var item of data) {
             var tmp = {}
             tmp.id = item.orderId
