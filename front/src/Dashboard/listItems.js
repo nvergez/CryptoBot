@@ -7,10 +7,11 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import AdbIcon from '@material-ui/icons/Adb';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 export const mainListItems = (
   <div>
-    <ListItem button onClick={() => {window.location='/'}}>
+    <ListItem button onClick={() => {window.location='/dashboard'}}>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
@@ -39,6 +40,12 @@ export const mainListItems = (
         <AdbIcon />
       </ListItemIcon>
       <ListItemText primary="Bot" />
+    </ListItem>
+    <ListItem button onClick={() => {localStorage.removeItem("ID_TOKEN"); window.location='/'}}>
+      <ListItemIcon>
+        <ExitToAppIcon />
+      </ListItemIcon>
+      <ListItemText primary="Disconnect" />
     </ListItem>
   </div>
 );

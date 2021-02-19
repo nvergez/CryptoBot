@@ -1,0 +1,20 @@
+{
+  "name": "service_db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon ./src/server.js"
+  },
+  "author": "Nicolas Vergez",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
+    "uuid": "^8.3.2",
+    "restify": "^8.5.1",
+    "restify-errors": "^8.0.2",
+    "restify-cors-middleware2": "^2.1.2"
+  }
+}

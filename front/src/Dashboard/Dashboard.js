@@ -76,7 +76,7 @@ export default function Dashboard() {
           <Route path='/balances' component={Balances} />
           <Route path="/bot" component={Bot} />
           <Route path="/buysell" component={BuySell} />
-          <Route component={Home} />
+          <Route path="/dashboard" component={Home} />
         </Switch>
       </Router>
     </div>

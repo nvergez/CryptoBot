@@ -29,3 +29,21 @@ services:
             - ./front/src:/app/src
         ports:
             - "80:3000"
+    database-mysql:
+        image: mysql:latest
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+        ports:
+            - 0.0.0.0:7200:3306
+        volumes:
+            - ./database/cryptobot_db.sql:/docker-entrypoint-initdb.d/sample.sql
+    service-db:
+        build:
+            context: ./service_db
+        env_file:
+            - .env
+        volumes:
+            - ./service_db/src:/app/src
+        ports: 
+            - "9002:9002"
