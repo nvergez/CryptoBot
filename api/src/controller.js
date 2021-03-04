@@ -151,4 +151,22 @@ controller.openOrders = async (req, res, next) => {
     }
 }
 
+controller.prices24hBtc = async (req, res, next) => {
+    try {
+        var result = []
+        var data = await client.candles({symbol: 'BTCUSDT', interval: '1h', limit: 12})
+        for (var item of data) {
+            var tmp = {}
+            var date = new Date(item.closeTime + 1000)
+            tmp.time = date.getHours() + ':' + ('0' + date.getMinutes()).substr(-2)
+            tmp.amount = item.close
+            result.push(tmp)
+        }
+        res.send(result)
+        return next()
+    } catch (e) {
+        console.log(e)
+        return next(new errors.BadRequestError("cought"))
+    }
+}
 export default controller
