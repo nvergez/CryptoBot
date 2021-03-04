@@ -1,34 +1,53 @@
-import React from 'react';
-import { useTheme } from '@material-ui/core/styles';
+import React, { Component } from 'react';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from '../Title';
+import { get24hBtc } from '../../api/binance';
 
-// Generate Sales Data
-function createData(time, amount) {
-  return { time, amount };
-}
+class Chart extends Component {
+  _isMounted = false
 
-const data = [
-  createData('00:00', 4903),
-  createData('03:00', 4440),
-  createData('06:00', 4950),
-  createData('09:00', 5110),
-  createData('12:00', 6000),
-  createData('15:00', 4500),
-  createData('18:00', 5015),
-  createData('21:00', 6000),
-  createData('00:00', 5100),
-];
+  constructor() {
+    super()
 
-export default function Chart() {
-  const theme = useTheme();
+    this.state = {
+      data: []
+    }
 
-  return (
-    <React.Fragment>
-      <Title>Today</Title>
+    this.handleReload = this.handleReload.bind(this)
+  }
+
+  componentDidMount() {
+    this._isMounted = true
+    this.handleReload()
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false
+  }
+
+  handleReload() {
+    if (this._isMounted) {
+      get24hBtc()
+      .then((response) => {
+        response = response.map((item) => {
+          item.amount *= 0.11
+          return item
+        })
+        this.setState({data: response})
+      })
+      .catch((error) => {
+        this.setState({data: []})
+      })
+    }
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+      <Title>Last 12 hours</Title>
       <ResponsiveContainer>
-        <LineChart
-          data={data}
+        <LineChart  
+          data={this.state.data}
           margin={{
             top: 16,
             right: 16,
@@ -36,20 +55,23 @@ export default function Chart() {
             left: 24,
           }}
         >
-          <XAxis dataKey="time" stroke={theme.palette.text.secondary}>
+          <XAxis dataKey="time" >
           </XAxis>
-          <YAxis stroke={theme.palette.text.secondary}>
+          <YAxis >
             <Label
               angle={270}
               position="left"
-              style={{ textAnchor: 'middle', fill: theme.palette.text.primary }}
+              style={{ textAnchor: 'middle' }}
             >
               Balance ($)
             </Label>
           </YAxis>
-          <Line type="monotone" dataKey="amount" stroke={theme.palette.primary.main} dot={false} />
+          <Line type="monotone" dataKey="amount" dot={false} />
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>
-  );
+    )
+  }
 }
+
+export default Chart

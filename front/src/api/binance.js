@@ -23,4 +23,11 @@ async function getOpenOrders() {
     return res.data
 }
 
-module.exports = { getTotalBalance, getAllBalances, getOpenOrders }
+async function get24hBtc() {
+    if (stopApiCall)
+        return []
+    const res = await axios.get("http://localhost:9000/prices/btc/24h")
+    return res.data
+}
+
+module.exports = { getTotalBalance, getAllBalances, getOpenOrders, get24hBtc }
