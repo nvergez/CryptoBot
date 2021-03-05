@@ -14,6 +14,8 @@ function setupRoutes(server) {
     server.get("/account/allBalances", controller.allBalances)
 
     server.get("/account/openOrders", controller.openOrders)
+
+    server.get("/prices/btc/24h", controller.prices24hBtc)
 };
 
 export default setupRoutes;
